@@ -8,9 +8,6 @@ package starbucks.homePage;
 import java.awt.*;
 import javax.swing.ImageIcon;
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
 import starbucks.homePage.views.items;
 import starbucks.homePage.views.topHeader;
 
@@ -22,8 +19,7 @@ public class HomePage extends JFrame{
     private final items coffeeItems;
     public HomePage() {
         homepage = new JFrame();
-        topheader = new topHeader();
-        coffeeItems = new items();
+        topheader = new topHeader(homepage);
         homepage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
         homepage.setSize(800,650);
         homepage.setTitle("Starbucks");
@@ -31,7 +27,9 @@ public class HomePage extends JFrame{
         homepage.getContentPane().setBackground(new Color(0xff0C1015));
         homepage.setLayout(new BorderLayout());
         homepage.add(topheader,BorderLayout.NORTH);
+        coffeeItems = new items(homepage);
         homepage.add(new JScrollPane(coffeeItems),BorderLayout.CENTER);
+        homepage.setExtendedState(homepage.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         homepage.setVisible(true);
         
         

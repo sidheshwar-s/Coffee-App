@@ -5,6 +5,8 @@
  */
 package starbucks.homePage.models;
 
+import java.util.Map;
+
 /**
  *
  * @author sidhesh
@@ -14,12 +16,17 @@ public class CoffeeModel {
     public final int price;
     public final String coffeeName;
     public final String description;
+    public final String size = "S";
+    public final String productDescription;
+    public final Map<String,String> nutritionValues;
     
   
-    public CoffeeModel(String imageUrl, int price, String coffeeName, String description) {
+    public CoffeeModel(String imageUrl, int price, String coffeeName, String description, String productDescription, Map<String,String> nutritionValue) {
         this.imageUrl = imageUrl;
         this.price = price;
         this.coffeeName = coffeeName;
         this.description = description;
+        this.productDescription = productDescription;
+        this.nutritionValues = nutritionValue;
     }
 }

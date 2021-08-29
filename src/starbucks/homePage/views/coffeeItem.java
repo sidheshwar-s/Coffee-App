@@ -7,12 +7,12 @@ package starbucks.homePage.views;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
@@ -34,9 +34,10 @@ public class coffeeItem extends JPanel{
     JLabel coffeePrice;
     JButton addToCart = new JButton("+");
     
-    public coffeeItem(CoffeeModel coffee) {
+    public coffeeItem(JFrame homePage,CoffeeModel coffee) {
        setBackground(new Color(0xff252A34));
        setLayout(new BorderLayout());
+      
        coffeeImage = new JLabel();
        coffeeName = new JLabel(coffee.coffeeName);
        coffeeName.setForeground(Color.white);
@@ -73,6 +74,7 @@ public class coffeeItem extends JPanel{
         add(coffeeName,BorderLayout.NORTH);
         add(coffeeImage,BorderLayout.WEST);
         add(coffeDetails,BorderLayout.CENTER);
+
        setVisible(true);
 
     }   
