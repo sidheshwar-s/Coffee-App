@@ -7,11 +7,7 @@ package starbucks.productScreen;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
 import starbucks.homePage.models.CoffeeModel;
 import starbucks.productScreen.views.productTopHeader;
 
@@ -35,7 +31,6 @@ public class ProductScreen extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
         setVisible(true);
        
-
     }
 
 }
