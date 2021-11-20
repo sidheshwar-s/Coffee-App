@@ -19,6 +19,7 @@ public class ProductScreen extends JFrame{
     
     private CoffeeModel coffee;
     public ProductScreen(CoffeeModel coffee) {
+        
         this.coffee = coffee;
         setSize(800,650);
         setTitle("Starbucks");

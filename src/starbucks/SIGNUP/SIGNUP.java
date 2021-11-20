@@ -5,7 +5,15 @@
  */
 package starbucks.SIGNUP;
 
-import starbucks.LOGINPAGE.*;
+import starbucks.Starbucks;
+import java.sql.Statement;
+import java.sql.PreparedStatement;
+import starbucks.database.Database;
+import java.sql.Connection;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import starbucks.homePage.HomePage;
+
 
 /**
  *
@@ -18,6 +26,8 @@ public class SIGNUP extends javax.swing.JFrame {
      */
     public SIGNUP() {
         initComponents();
+        this.setVisible(true);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
     }
 
     /**
@@ -30,14 +40,14 @@ public class SIGNUP extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTextField3 = new javax.swing.JTextField();
+        nameTextField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
+        createAccountButton = new javax.swing.JButton();
+        passwordTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        emailTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -47,12 +57,12 @@ public class SIGNUP extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        nameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                nameTextFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 270, 280, 40));
+        jPanel1.add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 270, 280, 40));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -68,33 +78,33 @@ public class SIGNUP extends javax.swing.JFrame {
         jLabel5.setText("Already have an account? Log in");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 570, 210, 30));
 
-        jButton1.setBackground(new java.awt.Color(255, 204, 102));
-        jButton1.setText("CREATE ACCOUNT");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        createAccountButton.setBackground(new java.awt.Color(255, 204, 102));
+        createAccountButton.setText("CREATE ACCOUNT");
+        createAccountButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                createAccountButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 510, 230, 40));
+        jPanel1.add(createAccountButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 510, 230, 40));
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        passwordTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                passwordTextFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 450, 280, 40));
+        jPanel1.add(passwordTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 450, 280, 40));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("PASSWORD");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 400, 230, 50));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        emailTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                emailTextFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 360, 280, 40));
+        jPanel1.add(emailTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 360, 280, 40));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -123,21 +133,42 @@ public class SIGNUP extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel1FocusGained
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void emailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_emailTextFieldActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void createAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountButtonActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+        String email = emailTextField.getText();
+        String name = nameTextField.getText();
+        String password = passwordTextField.getText();
+        if(email.equals("") || name.equals("") || password.equals("")) {
+             JOptionPane.showMessageDialog(null, "All field are required", "Please enter all fields", JOptionPane.INFORMATION_MESSAGE);
+             return;
+        }
+        Database db = Starbucks.db;
+        Connection connection = db.connection;
+        try {
+            PreparedStatement stm = connection.prepareStatement("INSERT INTO users (name,email,password) VALUES (?,?,?)");
+            stm.setString(1, name);
+            stm.setString(2, email);
+            stm.setString(3, password);
+            stm.execute();
+            this.dispose();
+            HomePage homePage = new HomePage();
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(null, "User with entered email already exist", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_createAccountButtonActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void passwordTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_passwordTextFieldActionPerformed
+
+    private void nameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,7 +207,8 @@ public class SIGNUP extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton createAccountButton;
+    private javax.swing.JTextField emailTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -185,8 +217,7 @@ public class SIGNUP extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField nameTextField;
+    private javax.swing.JTextField passwordTextField;
     // End of variables declaration//GEN-END:variables
 }
