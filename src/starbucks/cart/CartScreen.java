@@ -22,7 +22,7 @@ public class CartScreen extends JFrame{
         setTitle("Your Cart");
         setIconImage(new ImageIcon("src/starbucks/cup.png").getImage());
         getContentPane().setBackground(new Color(0xff0C1015));
-//        setLayout(new BorderLayout());
+        setLayout(new BorderLayout());
         screen.setLayout(new BorderLayout());
         screen.setBackground(new Color(0xff0C1015));
         Border screenBorder = screen.getBorder();

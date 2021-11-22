@@ -24,7 +24,7 @@ import javax.swing.JTextField;
 import starbucks.SIGNUP.SIGNUP;
 import starbucks.Starbucks;
 import starbucks.database.Database;
-import starbucks.globals.Globals;
+//import starbucks.globals.Globals;
 import starbucks.homePage.HomePage;
 
 /**
@@ -83,7 +83,7 @@ public class LoginPage {
                 JOptionPane.showMessageDialog(null, "Invalid email or password", "Error!", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
-            Globals.user_id  = result.getInt("id");
+//            Globals.user_id  = result.getInt("id");
             frame.dispose();
             HomePage homePage = new HomePage();
         }

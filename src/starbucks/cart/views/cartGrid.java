@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 public class cartGrid extends JPanel{
     public cartGrid() {
         for(int i =0;i<10;i++) {
-//            add(new cartItem());
+            add(new cartItem());
         }
         setLayout(new GridLayout(10,1,10,10));
         setBackground(new Color(0xff0C1015));

@@ -11,6 +11,8 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -18,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import starbucks.homePage.HomePage;
 import starbucks.homePage.models.CoffeeModel;
 
 /**
@@ -65,6 +68,27 @@ public class productTopHeader extends JPanel{
         bottomRow.setBackground(new Color(0xff0C1015));
         bottomRow.setLayout(new FlowLayout());
         
+        
+        // back button
+        Border backButtonBorder = new EmptyBorder(10,20,10,20);
+        Border backButtonMargin = new EmptyBorder(10,40,10,40);
+        
+        JButton backButton = new JButton("Back");
+        backButton.setFocusable(false);
+        backButton.setFont(new Font("Lucida Sans Regular", Font.PLAIN, 18));
+        backButton.setForeground(Color.white);
+        backButton.setVisible(true);
+        backButton.setBackground(new Color(0xff252A34));
+        backButton.setBounds(50,80,190,30);
+        backButton.setBorder(new CompoundBorder(backButtonBorder,backButtonMargin));
+         backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                HomePage homepage = new HomePage();
+                }
+        }
+       );
         
         JButton small = new JButton("Small");
         small.setFocusPainted(false);
@@ -117,7 +141,7 @@ public class productTopHeader extends JPanel{
         add(bottomRow,BorderLayout.SOUTH);
         add(coffeeName,BorderLayout.NORTH);
         add(coffeeImage,BorderLayout.WEST);
-      
+        add(backButton);
         add(details,BorderLayout.CENTER);
         
     }

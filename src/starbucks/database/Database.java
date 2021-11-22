@@ -15,7 +15,7 @@ public class Database {
     public Connection connection = null;
     public Database() {
         try {
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/starbucks","postgres", "Sidhesh#2002");
+            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/starbucks","postgres", "arun");
             System.out.println("Sucessfully connected");
         } catch(Exception e) {
             System.out.println(e);

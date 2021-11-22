@@ -48,8 +48,7 @@ public class cartItem extends JPanel{
     JButton decreaseQuantity = new JButton("-");
     JLabel count;
     
-    public cartItem(CoffeeModel coffee) {
-        this.coffee = coffee;
+    public cartItem() {
         setBackground(new Color(0xff252A34));
        setLayout(new BorderLayout());
        Border panelBorder = getBorder();
