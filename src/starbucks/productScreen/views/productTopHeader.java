@@ -20,8 +20,12 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import starbucks.Starbucks;
+import starbucks.database.Database;
 import starbucks.homePage.HomePage;
 import starbucks.homePage.models.CoffeeModel;
+import java.sql.*;
+import starbucks.Globals.Globals;
 
 /**
  *
@@ -90,34 +94,34 @@ public class productTopHeader extends JPanel{
         }
        );
         
-        JButton small = new JButton("Small");
-        small.setFocusPainted(false);
-        small.setFont(new Font("Lucida Sans Regular", Font.PLAIN, 18));
-        small.setForeground(Color.white);
-        small.setVisible(true);
-        small.setBackground(new Color(0xff252A34));
+//        JButton small = new JButton("Small");
+//        small.setFocusPainted(false);
+//        small.setFont(new Font("Lucida Sans Regular", Font.PLAIN, 18));
+//        small.setForeground(Color.white);
+//        small.setVisible(true);
+//        small.setBackground(new Color(0xff252A34));
+//        small.setBorder(new CompoundBorder(smallBorder,smallMargin));
+//        
+//        JButton medium = new JButton("Medium");
+//        medium.setFocusPainted(false);
+//        medium.setFont(new Font("Lucida Sans Regular", Font.PLAIN, 18));
+//        medium.setForeground(Color.white);
+//        medium.setVisible(true);
+//        medium.setBackground(new Color(0xff252A34));
+//        medium.setBorder(new CompoundBorder(smallBorder,smallMargin));
+//        
+//        JButton large = new JButton("Large");
+//        large.setFocusPainted(false);
+//        large.setFont(new Font("Lucida Sans Regular", Font.PLAIN, 18));
+//        large.setForeground(Color.white);
+//        large.setVisible(true);
+//        large.setBackground(new Color(0xff252A34));
+//        large.setBorder(new CompoundBorder(smallBorder,smallMargin));
+//        
+//        JLabel space = new JLabel("              ");
+        
         Border smallBorder = new EmptyBorder(10,20,10,20);
         Border smallMargin = new EmptyBorder(10,40,10,40);
-        small.setBorder(new CompoundBorder(smallBorder,smallMargin));
-        
-        JButton medium = new JButton("Medium");
-        medium.setFocusPainted(false);
-        medium.setFont(new Font("Lucida Sans Regular", Font.PLAIN, 18));
-        medium.setForeground(Color.white);
-        medium.setVisible(true);
-        medium.setBackground(new Color(0xff252A34));
-        medium.setBorder(new CompoundBorder(smallBorder,smallMargin));
-        
-        JButton large = new JButton("Large");
-        large.setFocusPainted(false);
-        large.setFont(new Font("Lucida Sans Regular", Font.PLAIN, 18));
-        large.setForeground(Color.white);
-        large.setVisible(true);
-        large.setBackground(new Color(0xff252A34));
-        large.setBorder(new CompoundBorder(smallBorder,smallMargin));
-        
-        JLabel space = new JLabel("              ");
-        
         JButton order = new JButton("Place Order");
         order.setFocusPainted(false);
         order.setFont(new Font("Arial Black", Font.PLAIN, 18));
@@ -126,14 +130,50 @@ public class productTopHeader extends JPanel{
         order.setBackground(new Color(0xff6ECEA6));
         order.setBorder(new CompoundBorder(smallBorder,smallMargin));
         
-        bottomRow.add(small);
-        bottomRow.add(space);
-        bottomRow.add(medium);
-        bottomRow.add(space);
-        bottomRow.add(large);
-        for(int i=0;i<15;i++) {
-            bottomRow.add(space);
-        }
+        order.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Database db = Starbucks.db;
+                Connection con = db.connection;
+                try {
+                    PreparedStatement statement = con.prepareStatement("SELECT * from cart WHERE user_id=? AND product_name=?",ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+                    statement.setInt(1, Globals.user_id);
+                    statement.setString(2,coffee.coffeeName);
+                    ResultSet result = statement.executeQuery();
+                    if(result.first()) {
+                        int quantity = result.getInt("quantity");
+                        String product_name1 =result.getString("product_name");
+                        PreparedStatement update = con.prepareStatement("UPDATE cart SET quantity=? WHERE user_id=? AND product_name=?");
+                        update.setInt(1,quantity+1);
+                        update.setInt(2,Globals.user_id);
+                        update.setString(3,product_name1);
+                        update.execute();
+                        return;
+                      }
+                } catch( Exception exc) {
+                    System.out.println();
+                }
+                try {
+                    PreparedStatement statement = con.prepareStatement("INSERT INTO cart (user_id,product_name,quantity) VALUES (?,?,?)");
+                    statement.setInt(1, Globals.user_id);
+                    statement.setString(2, coffee.coffeeName);
+                    statement.setInt(3,1);
+                    statement.execute();
+                } catch(Exception ek) {
+                    System.out.println(ek);
+                }
+            }
+            
+        });
+        
+//        bottomRow.add(small);
+//        bottomRow.add(space);
+//        bottomRow.add(medium);
+//        bottomRow.add(space);
+//        bottomRow.add(large);
+//        for(int i=0;i<15;i++) {
+//            bottomRow.add(space);
+//        }
         bottomRow.add(order);
         bottomRow.setVisible(true);
         
