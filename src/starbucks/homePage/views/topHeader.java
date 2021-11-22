@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import starbucks.cart.CartScreen;
 
 /**
  *
@@ -49,6 +50,7 @@ public class topHeader extends JPanel {
         @Override
         public void mouseClicked(MouseEvent e) {
             homePage.dispose();
+            CartScreen cart = new CartScreen();
         }
     });
         add(cart,BorderLayout.EAST);

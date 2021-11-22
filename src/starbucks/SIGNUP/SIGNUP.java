@@ -12,6 +12,7 @@ import starbucks.database.Database;
 import java.sql.Connection;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import starbucks.LOGINPAGE.LoginPage;
 import starbucks.homePage.HomePage;
 
 
@@ -155,7 +156,7 @@ public class SIGNUP extends javax.swing.JFrame {
             stm.setString(3, password);
             stm.execute();
             this.dispose();
-            HomePage homePage = new HomePage();
+            LoginPage loginPage = new LoginPage();
         } catch(Exception e) {
             JOptionPane.showMessageDialog(null, "User with entered email already exist", "Error!", JOptionPane.INFORMATION_MESSAGE);
             System.out.println(e);
