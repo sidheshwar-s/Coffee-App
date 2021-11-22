@@ -10,6 +10,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,6 +21,7 @@ import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import starbucks.homePage.models.CoffeeModel;
+import starbucks.productScreen.ProductScreen;
 
 
 /**
@@ -64,6 +67,15 @@ public class coffeeItem extends JPanel{
         addToCart.setOpaque(true);
         addToCart.setFont(new Font("Arial",Font.PLAIN,23));
         addToCart.setFocusPainted(false);
+        addToCart.addActionListener(new ActionListener (){
+           @Override
+           public void actionPerformed(ActionEvent e) {
+               homePage.dispose();
+               ProductScreen productscreeen = new ProductScreen(coffee);
+           }
+            
+        });
+        
         coffeDetails.setBorder(new CompoundBorder(detailsborder, detailsMargin));
         coffeDetails.add(coffeeDesc);
         coffeDetails.add(coffeePrice);

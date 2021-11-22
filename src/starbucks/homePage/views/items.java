@@ -46,31 +46,31 @@ public class items extends JPanel{
             Map.of("calories", "10","fat","0g","cholesterol","0mg","sodium","0mg","protein","1g","caffeine","150mg")
             ) ;
     private final CoffeeModel honeyAlmondModel = new CoffeeModel("src/starbucks/honey almond.jpg",
-                    140,"<html>Honey Almondmilk Flat White<html/>",
+                    140,"Honey Almondmilk Flat White",
                     "<html>Blonde Espresso Roast<br/> with a hint of honey<html/>",
                     "<html>This flat white intentionally pairs almondmilk and Starbucks® Blonde Espresso Roast <br/>with a hint of honey, making a perfect amount of creamy, nutty sweetness.<html/>",
                     Map.of("calories", "120","fat","4g","cholesterol","0mg","sodium","100mg","protein","2g","caffeine","150mg"));
     private final CoffeeModel pumpkinSpiceLatteModel  = new CoffeeModel("src/starbucks/pumpkinSpiceLatte.jpg",
-                    180,"<html>Pumpkin Spice Latte<html/>",
+                    180,"Pumpkin Spice Latte",
                     "<html>Pumpkin spice topped<br/>with whipped cream",
                     "<html>Our signature espresso and steamed milk with the celebrated flavor combination<br/> of pumpkin, cinnamon, nutmeg and clove. Enjoy it topped with whipped cream <br/>and real pumpkin-pie spices.<html/>",
                     Map.of("calories", "390","fat","14g","cholesterol","50mg","sodium","230mg","protein","14g","caffeine","150mg")
                     );
     private final CoffeeModel caffeMochaModel = new CoffeeModel("src/starbucks/caffeMocha.jpg",
-                    100,"<html>Caffe Mocha<html/>",
+                    100,"Caffe Mocha",
                     "<html>Expresso combined with<br/>bittersweat mocha sauce<html/>",
                     "<html>Our rich, full-bodied espresso combined with bittersweet mocha sauce and <br/>steamed milk, then topped with sweetened whipped cream. <br/>The classic coffee drink that always sweetly satisfies.<html/>",
                     Map.of("calories", "370","fat","15g","cholesterol","45mg","sodium","150mg","protein","14g","caffeine","175mg")
                     ) ;
     private final CoffeeModel hotChocolateModel =  new CoffeeModel("src/starbucks/hotChocolate.jpg",
-                    200,"<html>Hot Chocolate Drink<html/>",
+                    200,"Hot Chocolate Drink",
                     "<html>Steamed milk topped<br/>with chocolate-flavoured drizzle<html/>",
                     "<html>Steamed milk and mocha sauce topped with sweetened whipped cream and <br/>a chocolate-flavored drizzle. A timeless classic made to sweeten your spirits..<html/>",
                     Map.of("calories", "370","fat","16g","cholesterol","50mg","sodium","150mg","protein","14g","caffeine","250mg")
                     );
     private final CoffeeModel caramelApplceSpiceModel = new CoffeeModel("src/starbucks/caramelAppleSpice.jpg",
                     170,
-                    "<html>Caramle Apple Spice<html/>",
+                    "Caramle Apple Spice",
                     "<html>Steamed apple juice complemented <br/>with cinnamon syrup<html/>",
                     "<html>Steamed apple juice complemented with cinnamon syrup, whipped cream and <br/>a caramel sauce drizzle.<html?",
                     Map.of("calories", "380","fat","8g","cholesterol","25mg","sodium","35mg","protein","1g","caffeine","0mg")
