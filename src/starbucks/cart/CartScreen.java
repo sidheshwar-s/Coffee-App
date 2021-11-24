@@ -33,7 +33,7 @@ public class CartScreen extends JFrame{
          backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                dispose();
                 HomePage homepage = new HomePage();
                 }
         }

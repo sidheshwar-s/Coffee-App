@@ -26,13 +26,14 @@ import starbucks.homePage.HomePage;
 import starbucks.homePage.models.CoffeeModel;
 import java.sql.*;
 import starbucks.Globals.Globals;
+import starbucks.productScreen.ProductScreen;
 
 /**
  *
  * @author sidhesh
  */
 public class productTopHeader extends JPanel{
-    public productTopHeader(CoffeeModel coffee) {
+    public productTopHeader(CoffeeModel coffee,ProductScreen screen) {
         setSize(200,200);
         setLayout(new BorderLayout());
         setBackground(new Color(0xff0C1015));
@@ -88,7 +89,7 @@ public class productTopHeader extends JPanel{
          backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                screen.dispose();
                 HomePage homepage = new HomePage();
                 }
         }

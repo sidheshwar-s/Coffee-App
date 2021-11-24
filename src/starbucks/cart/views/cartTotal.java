@@ -14,20 +14,21 @@ import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import starbucks.Globals.Globals;
 
 /**
  *
  * @author sidhesh
  */
 public class cartTotal extends JPanel{
-    JLabel totalPrice;
+    public static JLabel totalPrice;
     public cartTotal() {
         Border border = this.getBorder();
         Border margin = new EmptyBorder(20,20,20,20);
         this.setBorder(new CompoundBorder(border,margin));
         setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
         this.setBackground(new Color(0xff0C1015));
-        totalPrice = new JLabel("<html> Total = ₹ "+2000+"<html/>",SwingConstants.LEFT);
+        totalPrice = new JLabel("<html> Total = ₹ "+Globals.total_price+"<html/>",SwingConstants.LEFT);
         totalPrice.setFont(new Font("Arial",Font.PLAIN,23));
         totalPrice.setForeground(Color.WHITE);
         JButton order = new JButton("Place Order");

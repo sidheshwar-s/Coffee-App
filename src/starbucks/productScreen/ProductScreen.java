@@ -27,7 +27,7 @@ public class ProductScreen extends JFrame{
         getContentPane().setBackground(new Color(0xff0C1015));
         setLayout(new BorderLayout());
         setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
-        add(new productTopHeader(coffee),BorderLayout.NORTH);
+        add(new productTopHeader(coffee,this),BorderLayout.NORTH);
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
         setVisible(true);

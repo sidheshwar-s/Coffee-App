@@ -44,7 +44,6 @@ public class SIGNUP extends javax.swing.JFrame {
         nameTextField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         createAccountButton = new javax.swing.JButton();
         passwordTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -63,21 +62,17 @@ public class SIGNUP extends javax.swing.JFrame {
                 nameTextFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 270, 280, 40));
+        jPanel1.add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 190, 280, 40));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("NAME");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 230, 120, 40));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 150, 120, 40));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("SIGN UP");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 140, 140, 60));
-
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Already have an account? Log in");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 570, 210, 30));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 140, 60));
 
         createAccountButton.setBackground(new java.awt.Color(255, 204, 102));
         createAccountButton.setText("CREATE ACCOUNT");
@@ -86,31 +81,31 @@ public class SIGNUP extends javax.swing.JFrame {
                 createAccountButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(createAccountButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 510, 230, 40));
+        jPanel1.add(createAccountButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 430, 230, 40));
 
         passwordTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordTextFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(passwordTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 450, 280, 40));
+        jPanel1.add(passwordTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 370, 280, 40));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("PASSWORD");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 400, 230, 50));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 320, 230, 50));
 
         emailTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailTextFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(emailTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 360, 280, 40));
+        jPanel1.add(emailTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 280, 280, 40));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("EMAIL");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 320, 120, 40));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, 120, 40));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/starbucks/SIGNUP/black.jpg"))); // NOI18N
@@ -119,11 +114,11 @@ public class SIGNUP extends javax.swing.JFrame {
                 jLabel1FocusGained(evt);
             }
         });
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 100, 530, 580));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 530, 580));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/starbucks/SIGNUP/coffee-cu.jpg"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 750, 580));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 750, 580));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 20, 1350, 820));
 
@@ -214,7 +209,6 @@ public class SIGNUP extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;

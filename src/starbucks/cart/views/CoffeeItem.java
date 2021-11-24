@@ -15,6 +15,8 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.LayoutManager;
 import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Map;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -23,32 +25,42 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import starbucks.Starbucks;
+import starbucks.database.Database;
 import starbucks.homePage.models.CoffeeModel;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import starbucks.Globals.Globals;
+import static starbucks.cart.views.cartGrid.caffeMochaModel;
+import static starbucks.cart.views.cartGrid.cappuccinoModel;
+import static starbucks.cart.views.cartGrid.caramelApplceSpiceModel;
+import static starbucks.cart.views.cartGrid.expressoModel;
+import static starbucks.cart.views.cartGrid.honeyAlmondModel;
+import static starbucks.cart.views.cartGrid.hotChocolateModel;
+import static starbucks.cart.views.cartGrid.pumpkinSpiceLatteModel;
 
 /**
  *
  * @author sidhesh
  */
-public class cartItem extends JPanel{
+public class CoffeeItem extends JPanel{
      JLabel coffeeImage;
     JLabel coffeeName;
     JLabel coffeeDesc;
     JPanel coffeDetails;
     JLabel coffeePrice;
     JLabel coffeeMoreInfo;
-    CoffeeModel coffee = new CoffeeModel(
-                    "src/starbucks/cappuccino.jpg",
-                    120,"Cappuccino",
-                    "Dark, rich espresso",
-            "<html>Dark, rich espresso lies in wait under a smoothed and stretched layer of <br/>thick milk foam. An alchemy of barista artistry and craft.<html/>",
-            Map.of("calories", "140","fat","5g","cholesterol","20mg","sodium","120mg","protein","9g","caffeine","150mg")
-            );;
+    CoffeeModel coffee;
     
     JButton increaseQuantity = new JButton("+");
     JButton decreaseQuantity = new JButton("-");
-    JLabel count;
+    JLabel count = new JLabel("1");
+    int currentQuantity;
+    int productId;
     
-    public cartItem() {
+    public CoffeeItem(CoffeeModel coffee) {
+          this.coffee = coffee;
         setBackground(new Color(0xff252A34));
        setLayout(new BorderLayout());
        Border panelBorder = getBorder();
@@ -90,9 +102,26 @@ public class cartItem extends JPanel{
         add(coffeDetails,BorderLayout.CENTER);
         RoundedPanel quantity = new RoundedPanel(10,new Color(0xff0C1015));
         quantity.setOpaque(false);
-        count = new JLabel("1");
+        Database db = Starbucks.db;
+          Connection con = db.connection;
+          try{
+               PreparedStatement statement1 = con.prepareStatement("SELECT * from cart WHERE user_id=? AND product_name=?");
+                statement1.setInt(1, Globals.user_id);
+                statement1.setString(2,coffee.coffeeName);
+                ResultSet result1 = statement1.executeQuery();
+                while(result1.next()) {
+                    currentQuantity = result1.getInt("quantity");
+                    productId = result1.getInt("id");
+                    System.out.println(Integer.toString(currentQuantity));
+                    count = new JLabel(Integer.toString(currentQuantity));
+                }
+                
+          }catch(Exception ip){
+              System.out.println(ip);
+          }
         count.setFont(new Font("Arial",Font.PLAIN,23));
         count.setForeground(Color.white);
+        
         increaseQuantity.setSize(30,30);
         increaseQuantity.setOpaque(true);
         increaseQuantity.setFont(new Font("Arial",Font.PLAIN,23));
@@ -100,6 +129,26 @@ public class cartItem extends JPanel{
         increaseQuantity.setBackground(new Color(0xff0C1015));
         increaseQuantity.setBorderPainted(false);
         increaseQuantity.setForeground(Color.white);
+     
+        increaseQuantity.addActionListener((ActionEvent e) -> {
+            currentQuantity++;  
+          
+            try {
+                PreparedStatement update = con.prepareStatement("UPDATE cart SET quantity=? WHERE id=?");
+                update.setInt(1,currentQuantity);
+                update.setInt(2,productId);
+                update.execute();
+                int price = coffee.price;
+                Globals.total_price += price;
+                count.setText(Integer.toString(currentQuantity));
+                cartTotal.totalPrice.setText("<html> Total = ₹ "+Globals.total_price+"<html/>");
+                        
+                } catch( Exception exc) {
+                    System.out.println(exc);
+                }
+        });
+           
+        
         decreaseQuantity.setSize(30,30);
         decreaseQuantity.setOpaque(true);
         decreaseQuantity.setFont(new Font("Arial",Font.PLAIN,23));
@@ -108,11 +157,57 @@ public class cartItem extends JPanel{
         decreaseQuantity.setBorderPainted(false);
         decreaseQuantity.setForeground(Color.white);
         
+        decreaseQuantity.addActionListener((ActionEvent e) -> {
+            currentQuantity--;  
+            if(currentQuantity < 0 ) {
+                return;
+            }
+            if(currentQuantity == 0) {
+                try {
+                    PreparedStatement update = con.prepareStatement("DELETE FROM cart WHERE id=?");
+                    update.setInt(1,productId);
+                    update.execute();
+
+                } catch (Exception ep) {
+                    System.out.print(ep);
+                }
+            }
+            try {
+                PreparedStatement update = con.prepareStatement("UPDATE cart SET quantity=? WHERE id=?");
+                update.setInt(1,currentQuantity);
+                update.setInt(2,productId);
+                update.execute();
+                int price = coffee.price;
+                Globals.total_price -= price;
+                count.setText(Integer.toString(currentQuantity));
+                cartTotal.totalPrice.setText("<html> Total = ₹ "+Globals.total_price+"<html/>");
+
+                        
+                } catch( Exception exc) {
+                    System.out.println(exc);
+                }
+        });
+        
         quantity.add(decreaseQuantity);
         quantity.add(count);
         quantity.add(increaseQuantity);
         coffeDetails.add(quantity);
         setVisible(true);
+        
+        
+    }
+    public CoffeeModel getCoffee(String coffeeName) {
+        if(null == coffeeName) {
+            return caramelApplceSpiceModel;
+        } else return switch (coffeeName) {
+            case "Cappuccino" -> cappuccinoModel;
+            case "Expresso" -> expressoModel;
+            case "Honey Almondmilk Flat White" -> honeyAlmondModel;
+            case "Pumpkin Spice Latte" -> pumpkinSpiceLatteModel;
+            case "Caffe Mocha" -> caffeMochaModel;
+            case "Hot Chocolate Drink" -> hotChocolateModel;
+            default -> caramelApplceSpiceModel;
+        };
     }
     
     class RoundedPanel extends JPanel
