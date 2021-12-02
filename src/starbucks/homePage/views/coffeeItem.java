@@ -24,10 +24,6 @@ import starbucks.homePage.models.CoffeeModel;
 import starbucks.productScreen.ProductScreen;
 
 
-/**
- *
- * @author sidhesh
- */
 public class coffeeItem extends JPanel{
     
     JLabel coffeeImage;

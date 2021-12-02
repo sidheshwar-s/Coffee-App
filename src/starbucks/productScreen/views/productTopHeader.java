@@ -25,6 +25,7 @@ import starbucks.database.Database;
 import starbucks.homePage.HomePage;
 import starbucks.homePage.models.CoffeeModel;
 import java.sql.*;
+import payment.mode;
 import starbucks.Globals.Globals;
 import starbucks.productScreen.ProductScreen;
 
@@ -95,31 +96,6 @@ public class productTopHeader extends JPanel{
         }
        );
         
-//        JButton small = new JButton("Small");
-//        small.setFocusPainted(false);
-//        small.setFont(new Font("Lucida Sans Regular", Font.PLAIN, 18));
-//        small.setForeground(Color.white);
-//        small.setVisible(true);
-//        small.setBackground(new Color(0xff252A34));
-//        small.setBorder(new CompoundBorder(smallBorder,smallMargin));
-//        
-//        JButton medium = new JButton("Medium");
-//        medium.setFocusPainted(false);
-//        medium.setFont(new Font("Lucida Sans Regular", Font.PLAIN, 18));
-//        medium.setForeground(Color.white);
-//        medium.setVisible(true);
-//        medium.setBackground(new Color(0xff252A34));
-//        medium.setBorder(new CompoundBorder(smallBorder,smallMargin));
-//        
-//        JButton large = new JButton("Large");
-//        large.setFocusPainted(false);
-//        large.setFont(new Font("Lucida Sans Regular", Font.PLAIN, 18));
-//        large.setForeground(Color.white);
-//        large.setVisible(true);
-//        large.setBackground(new Color(0xff252A34));
-//        large.setBorder(new CompoundBorder(smallBorder,smallMargin));
-//        
-//        JLabel space = new JLabel("              ");
         
         Border smallBorder = new EmptyBorder(10,20,10,20);
         Border smallMargin = new EmptyBorder(10,40,10,40);
@@ -134,6 +110,7 @@ public class productTopHeader extends JPanel{
         order.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                
                 Database db = Starbucks.db;
                 Connection con = db.connection;
                 try {
@@ -163,18 +140,12 @@ public class productTopHeader extends JPanel{
                 } catch(Exception ek) {
                     System.out.println(ek);
                 }
+                
+                
             }
             
         });
         
-//        bottomRow.add(small);
-//        bottomRow.add(space);
-//        bottomRow.add(medium);
-//        bottomRow.add(space);
-//        bottomRow.add(large);
-//        for(int i=0;i<15;i++) {
-//            bottomRow.add(space);
-//        }
         bottomRow.add(order);
         bottomRow.setVisible(true);
         

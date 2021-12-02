@@ -1,18 +1,13 @@
 
 package starbucks.LOGINPAGE;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.HashMap;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -44,6 +39,7 @@ public class LoginPage {
     JLabel signInfo = new JLabel("Already have an account?");
     JLabel image = new JLabel();
     JPanel imagePanel = new JPanel();
+    
     
     public LoginPage(){
        
@@ -127,7 +123,7 @@ public class LoginPage {
         frame.setBackground(Color.BLACK);
         
         frame.setVisible(true);
-//        frame.getContentPane().setBackground(new Color(0xff0C1015));
+        frame.setTitle("LoginPage");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 

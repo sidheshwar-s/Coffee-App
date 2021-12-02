@@ -6,6 +6,8 @@
 package starbucks.cart.views;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -14,11 +16,12 @@ import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import payment.mode;
 import starbucks.Globals.Globals;
 
 /**
  *
- * @author sidhesh
+ * @author arun
  */
 public class cartTotal extends JPanel{
     public static JLabel totalPrice;
@@ -32,6 +35,13 @@ public class cartTotal extends JPanel{
         totalPrice.setFont(new Font("Arial",Font.PLAIN,23));
         totalPrice.setForeground(Color.WHITE);
         JButton order = new JButton("Place Order");
+        order.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mode m = new mode();
+            }
+            
+        });
         order.setFocusPainted(false);
         order.setFont(new Font("Arial Black", Font.PLAIN, 18));
         order.setForeground(Color.white);

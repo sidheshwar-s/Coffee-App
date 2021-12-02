@@ -11,4 +11,5 @@ package starbucks.Globals;
 public class Globals {
     public static int user_id;
     public static int total_price = 0;
+    public static int check=0;
 }

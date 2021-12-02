@@ -16,8 +16,6 @@ import java.awt.Image;
 import java.awt.LayoutManager;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Map;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -40,10 +38,7 @@ import static starbucks.cart.views.cartGrid.honeyAlmondModel;
 import static starbucks.cart.views.cartGrid.hotChocolateModel;
 import static starbucks.cart.views.cartGrid.pumpkinSpiceLatteModel;
 
-/**
- *
- * @author sidhesh
- */
+
 public class CoffeeItem extends JPanel{
      JLabel coffeeImage;
     JLabel coffeeName;

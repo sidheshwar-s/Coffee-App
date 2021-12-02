@@ -9,7 +9,7 @@ import java.util.Map;
 
 /**
  *
- * @author sidhesh
+ * @author arun
  */
 public class CoffeeModel {
     public  final String imageUrl;
