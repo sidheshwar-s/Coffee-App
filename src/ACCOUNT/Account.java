@@ -137,9 +137,9 @@ public class Account extends javax.swing.JFrame {
                         .addComponent(password))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(46, 46, 46)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -206,6 +206,10 @@ public class Account extends javax.swing.JFrame {
     private void nameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameButtonActionPerformed
         // TODO add your handling code here:
         String Name =name.getText();
+        if(Name.equals("")) {
+            JOptionPane.showMessageDialog(this.getComponent(0),"Name can't be empty" );
+            return;
+        }
         int userid = Globals.user_id;
         try{
             PreparedStatement stm = con.prepareStatement("UPDATE users SET name=? WHERE id=? ");
@@ -231,6 +235,10 @@ public class Account extends javax.swing.JFrame {
     private void emailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailButtonActionPerformed
         // TODO add your handling code here:
         String Email = email.getText();
+        if(Email.equals("")) {
+            JOptionPane.showMessageDialog(this.getComponent(0),"Email can't be empty" );
+            return;
+        }
         int userid = Globals.user_id;
         try{
             PreparedStatement stm = con.prepareStatement("UPDATE users SET email=? WHERE id=? ");
@@ -246,6 +254,10 @@ public class Account extends javax.swing.JFrame {
     private void passwordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordButtonActionPerformed
         // TODO add your handling code here:
         String Password =password.getText();
+        if(Password.equals("")) {
+            JOptionPane.showMessageDialog(this.getComponent(0),"Password can't be empty" );
+            return;
+        }
         int userid = Globals.user_id;
         try{
             PreparedStatement stm = con.prepareStatement("UPDATE users SET password=? WHERE id=? ");
